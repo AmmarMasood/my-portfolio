@@ -1,0 +1,30 @@
+.navbar {
+  font-family: $font-primary;
+  list-style-type: none;
+  font-size: 3rem;
+
+  &_items {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &_item {
+    margin-right: 6rem;
+    padding: 3rem;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &--link {
+      text-decoration: none;
+      color: $color-pink-bright;
+      font-weight: 800;
+    }
+  }
+  &_item:last-child {
+    margin-right: 3rem;
+  }
+  &_item:hover {
+    background-color: $color-pink-dull;
+    transform: scale(1.1);
+  }
+}

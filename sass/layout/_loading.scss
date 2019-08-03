@@ -1,0 +1,48 @@
+.welcome {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  z-index: 2;
+
+  &_cover {
+    position: fixed;
+    background-color: $color-pink-bright;
+    height: 60%;
+    width: 100%;
+    z-index: 2;
+    top: -60%;
+  }
+
+  &_content {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: $color-grey-dark;
+    display: flex;
+    top: 0%;
+    justify-content: center;
+    align-items: center;
+  }
+  &_text {
+    width: 15rem;
+    height: 8rem;
+    overflow: hidden;
+    text-align: center;
+    // border: 2px solid white;
+    position: relative;
+  }
+  &_text h2 {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    color: $color-pink-bright;
+    margin-bottom: 2rem;
+  }
+}
+.main_content {
+  width: 100vw;
+  display: none;
+  position: relative;
+}
