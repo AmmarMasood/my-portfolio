@@ -3,9 +3,14 @@
 @import "./base/_base.scss";
 @import "./base/_animation.scss";
 
+@import "./components/_underline.scss";
 @import "./components/_button.scss";
 @import "./components/_navbar.scss";
+@import "./components/_form.scss";
+@import "./components/_sidebar.scss";
 
 @import "./layout/_loading.scss";
 @import "./layout/_header.scss";
 @import "./layout/_about.scss";
+@import "./layout/_projects.scss";
+@import "./layout/_contact.scss";

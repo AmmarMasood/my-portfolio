@@ -1,0 +1,45 @@
+.sidebar {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 12rem; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: transparent; /* Black */
+  // border: 2px solid orangered;
+  overflow: hidden; /* Disable horizontal scroll */
+
+  &_icons {
+    // border: 2px solid red;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    font-size: 2.5rem;
+    margin-top: 20rem;
+
+    &--icon {
+      padding-bottom: 3rem;
+
+      &:nth-last-child(2) {
+        padding-bottom: 2rem;
+      }
+      & > a {
+        text-decoration: none;
+        color: $color-grey-light;
+
+        transition: all 0.5s;
+        &:hover {
+          color: $color-pink-bright;
+        }
+      }
+    }
+  }
+}
+
+.vr_line {
+  border-left: 2px solid $color-grey-light;
+  height: 20rem;
+}

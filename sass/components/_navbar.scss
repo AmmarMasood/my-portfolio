@@ -1,15 +1,22 @@
 .navbar {
   font-family: $font-primary;
+  background-color: $color-grey-dark;
   list-style-type: none;
-  font-size: 3rem;
-
+  position: fixed;
+  width: 100%;
+  box-shadow: none;
+  z-index: 10;
+  padding: 1rem 0;
+  font-size: 2rem;
+  transition: all 0.8s;
+  // border: 2px solid green;
   &_items {
     display: flex;
     justify-content: flex-end;
   }
   &_item {
-    margin-right: 6rem;
-    padding: 3rem;
+    margin-right: 4rem;
+    padding: 1.5rem;
     text-align: center;
     transition: all 0.3s;
     cursor: pointer;
@@ -20,9 +27,7 @@
       font-weight: 800;
     }
   }
-  &_item:last-child {
-    margin-right: 3rem;
-  }
+
   &_item:hover {
     background-color: $color-pink-dull;
     transform: scale(1.1);

@@ -44,3 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
       delay: (el, i) => i * 150
     });
 });
+
+// scroll bar animation
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollpos = window.pageYOffset;
+  if (prevScrollpos > currentScrollpos) {
+    document.querySelector(".navbar").style.top = "0px";
+  } else {
+    document.querySelector(".navbar").style.top = "-100px";
+  }
+  prevScrollpos = currentScrollpos;
+};

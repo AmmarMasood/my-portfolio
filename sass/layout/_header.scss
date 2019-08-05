@@ -1,49 +1,57 @@
 .header {
   position: absolute;
-  width: 100vw;
   height: 100vh;
+  width: 100%;
   background-color: $color-grey-dark;
   font-family: $font-primary;
+  // border: 2px solid blue;
 
   &_text {
     color: $color-pink-bright;
-    height: 40%;
-    // border: 2px solid white;
+    // border: 2px solid yellow;
     position: relative;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding-left: 10rem;
+    padding-left: 13rem;
+
     h1 {
       font-family: "Luckiest Guy", cursive;
-      font-size: 8rem;
+      font-size: 6rem;
+      padding-bottom: 0.5rem;
     }
     h3 {
-      font-size: 5rem;
-      margin-bottom: 4rem;
+      font-size: 4rem;
+      margin-bottom: 2rem;
       font-family: $font-primary;
       color: $color-pink-dark;
+      padding-bottom: 1.5rem;
+    }
+    h4 {
+      font-size: 2.2rem;
+      color: $color-pink-dull;
     }
     &--profession {
       padding: 1rem;
       color: $color-pink-bright;
       & > .txt {
-        border-right: 2px solid $color-grey-light;
+        border-right: 4px solid $color-grey-light;
       }
     }
   }
 
   &_downarrow {
-    font-size: 6rem;
+    font-size: 4rem;
     color: $color-grey-light;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    height: 45vh;
+    // border: 2px solid white;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 90%;
+    left: 50%;
 
-    & > i {
-      animation: floats 4s ease-in-out infinite;
+    & > .icon-down-open {
+      animation: floats 2s ease-in-out infinite;
     }
   }
 }

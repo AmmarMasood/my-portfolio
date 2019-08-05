@@ -1,0 +1,111 @@
+.projects {
+  background-color: $color-grey-dark;
+  height: 100vh;
+  padding: 70rem 0;
+  // padding: 45rem 0;
+  position: relative;
+  &_layout {
+    // border: 2px solid green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: $font-primary;
+    background-color: $color-pink-dark;
+    min-height: 50%;
+    width: 80%;
+    padding: 2rem 1rem;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    // text-align: center;
+    // padding: 20rem 60rem;
+    h1 {
+      color: $color-grey-dark;
+      font-size: 5rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      display: inline-block;
+    }
+  }
+  &_cards {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, 1fr);
+    position: relative;
+    justify-items: center;
+    grid-gap: 2rem;
+  }
+
+  &_card {
+    background-color: $color-grey-dark;
+    min-height: 20rem;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-gap: 1rem;
+    -webkit-box-shadow: 1px 13px 18px -11px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 1px 13px 18px -11px rgba(0, 0, 0, 0.6);
+    box-shadow: 1px 13px 18px -11px rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: translateY(-20px);
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+
+      .projects_card--btn {
+        // display: grid;
+        // align-content: center;
+        // justify-items: center;
+
+        opacity: 1;
+      }
+
+      .projects_card--img {
+        // display: none;
+        opacity: 0;
+      }
+
+      .projects_card--txt {
+        // display: none;
+        opacity: 0;
+        z-index: -10;
+      }
+    }
+    &--btn {
+      transition: all 0.6s;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+    &--txt {
+      cursor: default;
+      display: grid;
+      transition: all 0.5s;
+      align-content: center;
+      opacity: 1;
+      color: $color-pink-dark;
+    }
+    &--img {
+      transition: all 0.5s;
+      display: grid;
+      justify-items: end;
+      opacity: 1;
+    }
+    img {
+      width: 90%;
+      height: 24rem;
+      border-radius: 3rem;
+    }
+    h2 {
+      font-size: 3rem;
+    }
+    p {
+      font-size: 2rem;
+    }
+  }
+}
