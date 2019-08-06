@@ -12,12 +12,31 @@ document.addEventListener("DOMContentLoaded", () => {
       targets: ".welcome_text h2",
       top: ["-150%", "50%"],
       easing: "easeOutQuad",
+      backgroundColor: "#1a1a1d",
       offset: "-=600",
       duration: "700"
     })
+
+    .add(
+      {
+        targets: ".loading_logo",
+        easing: "easeInOutElastic",
+        background: "#c3073f"
+      },
+      0
+    )
+    .add(
+      {
+        targets: ".loading_logo",
+        easing: "easeInOutElastic",
+        background: "#1a1a1d"
+      },
+      0
+    )
     .add({
       targets: ".welcome_text h2",
       top: ["50%", "150%"],
+      backgroundColor: "#1a1a1d",
       easing: "easeOutQuad",
       offset: "+=1000",
       duration: "700"
@@ -34,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".main_content").style.display = "block";
         document.querySelector(".welcome_cover").style.position = "absolute";
         document.querySelector(".welcome_content").style.position = "absolute";
+        document.querySelector("html").style.overflow = "auto";
       }
     })
     .add({
@@ -55,4 +75,34 @@ window.onscroll = function() {
     document.querySelector(".navbar").style.top = "-100px";
   }
   prevScrollpos = currentScrollpos;
+  var scroll = window.scrollY;
+  console.log(scroll);
+  if (scroll > 0) {
+    document.querySelector(".navbar").classList.add("shadow");
+  } else {
+    document.querySelector(".navbar").classList.remove("shadow");
+  }
 };
+
+function scrollTo(to, duration) {
+  if (document.body.scrollTop == to) return;
+  var diff = to - document.body.scrollTop;
+  var scrollStep = Math.PI / (duration / 10);
+  var count = 0,
+    currPos;
+  start = window.pageYOffset;
+  scrollInterval = setInterval(function() {
+    if (document.body.scrollTop != to) {
+      count = count + 1;
+      currPos = start + diff * (0.5 - 0.5 * Math.cos(count * scrollStep));
+      document.body.scrollTop = currPos;
+    } else {
+      clearInterval(scrollInterval);
+    }
+  }, 10);
+}
+
+function test(elID) {
+  var dest = document.getElementById(elID);
+  scrollTo(dest.offsetTop, 500);
+}

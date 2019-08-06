@@ -7,7 +7,8 @@
 
 html {
   font-size: 62.5%;
-  letter-spacing: 1.4px; }
+  letter-spacing: 1.4px;
+  overflow: hidden; }
 
 @keyframes floats {
   0% {
@@ -51,18 +52,20 @@ html {
   list-style-type: none;
   position: fixed;
   width: 100%;
+  top: 0;
   box-shadow: none;
   z-index: 10;
   padding: 1rem 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
   transition: all 0.8s; }
   .navbar_items {
     display: flex;
     justify-content: flex-end; }
   .navbar_item {
     margin-right: 4rem;
-    padding: 1.5rem;
+    padding: 2rem;
     text-align: center;
+    list-style: none;
     transition: all 0.3s;
     cursor: pointer; }
     .navbar_item--link {
@@ -72,6 +75,16 @@ html {
   .navbar_item:hover {
     background-color: #6f2232;
     transform: scale(1.1); }
+
+.logo {
+  float: left;
+  position: absolute;
+  top: -25%; }
+
+.shadow {
+  -webkit-box-shadow: -1px 5px 6px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 5px 6px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 5px 6px -2px rgba(0, 0, 0, 0.75); }
 
 .sidebar {
   height: 100%;
@@ -136,7 +149,7 @@ html {
     align-items: center; }
   .welcome_text {
     width: 15rem;
-    height: 8rem;
+    height: 15rem;
     overflow: hidden;
     text-align: center;
     position: relative; }
@@ -153,6 +166,10 @@ html {
   display: none;
   position: relative; }
 
+.loading_logo {
+  border-radius: 50%;
+  background-color: #1a1a1d; }
+
 .header {
   position: absolute;
   height: 100vh;
@@ -162,7 +179,7 @@ html {
   .header_text {
     color: #c3073f;
     position: relative;
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding-left: 13rem; }
@@ -199,7 +216,7 @@ html {
   background-color: #950740;
   height: 100vh;
   position: relative;
-  padding: 34rem 0; }
+  padding: 36rem 0; }
   .about_clip {
     color: #4e4e50;
     font-size: 7rem;
@@ -223,7 +240,6 @@ html {
   .about_heading {
     color: #c3073f;
     font-size: 5rem;
-    font-weight: 800;
     display: inline-block; }
   .about_stuff {
     display: grid;
@@ -296,7 +312,6 @@ html {
     .projects_layout h1 {
       color: #1a1a1d;
       font-size: 5rem;
-      font-weight: 800;
       margin-bottom: 2rem;
       display: inline-block; }
   .projects_cards {
@@ -359,176 +374,137 @@ html {
 
 .contact {
   display: flex;
-  min-height: 100vh; }
+  min-height: 100vh;
+  background-color: #950740; }
 
-.container {
-  flex: 0 1 700px;
+.form {
+  flex: 0 1 90rem;
   margin: auto;
-  padding: 10px; }
+  padding: 10px;
+  font-family: "Play", sans-serif; }
+  .form_screen {
+    position: relative;
+    background: #1a1a1d;
+    border-radius: 15px; }
+    .form_screen::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 20px;
+      right: 20px;
+      bottom: 0;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      z-index: -1; }
+  .form_body {
+    display: flex; }
+    .form_body--item {
+      flex: 1;
+      padding: 8rem; }
+    .form_body .left {
+      display: flex;
+      flex-direction: column; }
+  .form_title {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #950740;
+    font-size: 3rem; }
+    .form_title::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 5rem;
+      height: 0.5rem;
+      background: #950740; }
+  .form_contact {
+    margin-top: auto;
+    font-size: 1.5rem;
+    color: #4e4e50; }
+  .form_app_group {
+    margin-bottom: 15px;
+    font-family: "Play", sans-serif; }
+    .form_app_group .message {
+      margin-top: 40px; }
+    .form_app_group .button {
+      margin-bottom: 0;
+      text-align: right; }
+  .form_app_control {
+    width: 100%;
+    font-family: "Play", sans-serif;
+    padding: 1.3rem 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #4e4e50;
+    color: #ddd;
+    font-size: 1.5rem;
+    outline: none;
+    transition: border-color 0.2s; }
+    .form_app_control::placeholder {
+      color: #4e4e50; }
+    .form_app_control:focus {
+      border-bottom-color: #ddd; }
+  .form_app_button {
+    background: none;
+    border: none;
+    color: #950740;
+    padding-right: 1rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    outline: none;
+    font-family: "Play", sans-serif;
+    font-weight: 800; }
+    .form_app_button:hover {
+      color: #6f2232; }
 
-.screen {
-  position: relative;
-  background: #3e3e3e;
-  border-radius: 15px; }
-
-.screen:after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 20px;
-  right: 20px;
-  bottom: 0;
-  border-radius: 15px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  z-index: -1; }
-
-.screen-header {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  background: #4d4d4f;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px; }
-
-.screen-header-left {
-  margin-right: auto; }
-
-.screen-header-button {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 3px;
-  border-radius: 8px;
-  background: white; }
-
-.screen-header-button.close {
-  background: #ed1c6f; }
-
-.screen-header-button.maximize {
-  background: #e8e925; }
-
-.screen-header-button.minimize {
-  background: #74c54f; }
-
-.screen-header-right {
-  display: flex; }
-
-.screen-header-ellipsis {
-  width: 3px;
-  height: 3px;
-  margin-left: 2px;
-  border-radius: 8px;
-  background: #999; }
-
-.screen-body {
-  display: flex; }
-
-.screen-body-item {
-  flex: 1;
-  padding: 50px; }
-
-.screen-body-item.left {
-  display: flex;
-  flex-direction: column; }
-
-.app-title {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  color: #ea1d6f;
-  font-size: 26px; }
-
-.app-title:after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  width: 25px;
-  height: 4px;
-  background: #ea1d6f; }
-
-.app-contact {
-  margin-top: auto;
-  font-size: 8px;
-  color: #888; }
-
-.app-form-group {
-  margin-bottom: 15px; }
-
-.app-form-group.message {
-  margin-top: 40px; }
-
-.app-form-group.buttons {
-  margin-bottom: 0;
-  text-align: right; }
-
-.app-form-control {
+.notify {
+  font-family: "Play", sans-serif !important;
   width: 100%;
-  padding: 10px 0;
-  background: none;
-  border: none;
-  border-bottom: 1px solid #666;
-  color: #ddd;
-  font-size: 14px;
-  text-transform: uppercase;
-  outline: none;
-  transition: border-color 0.2s; }
-
-.app-form-control::placeholder {
-  color: #666; }
-
-.app-form-control:focus {
-  border-bottom-color: #ddd; }
-
-.app-form-button {
-  background: none;
-  border: none;
-  color: #ea1d6f;
-  font-size: 14px;
-  cursor: pointer;
-  outline: none; }
-
-.app-form-button:hover {
-  color: #b9134f; }
-
-.credits {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  color: #ffa4bd;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 16px;
-  font-weight: normal; }
-
-.credits-link {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  font-weight: bold;
-  text-decoration: none; }
-
-.dribbble {
-  width: 20px;
-  height: 20px;
-  margin: 0 5px; }
+  position: absolute;
+  font-size: 1.3rem;
+  color: #1a1a1d;
+  border: 2px solid white;
+  opacity: 0;
+  transition: all 1s;
+  text-align: center;
+  background-color: #c3073f;
+  padding: 1rem; }
 
 @media screen and (max-width: 520px) {
-  .screen-body {
+  .form_body {
     flex-direction: column; }
-  .screen-body-item.left {
+  .form_body--item.left {
     margin-bottom: 30px; }
-  .app-title {
+  .form_title {
     flex-direction: row; }
-  .app-title span {
+  .form_title span {
     margin-right: 12px; }
-  .app-title:after {
+  .form_title:after {
     display: none; } }
 
 @media screen and (max-width: 600px) {
-  .screen-body {
+  .form_body {
     padding: 40px; }
-  .screen-body-item {
+  .form_body--item {
     padding: 0; } }
+
+.footer {
+  height: 10rem;
+  background-color: #1a1a1d;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .footer_text {
+    color: #c3073f;
+    font-size: 1.5rem;
+    font-family: "Play", sans-serif; }
+    .footer_text--name a {
+      color: #4e4e50;
+      font-size: 1.8rem;
+      text-decoration: none;
+      transition: all 0.5s; }
+      .footer_text--name a:hover {
+        color: #6f2232; }

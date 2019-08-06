@@ -12,9 +12,9 @@ class TypeWriter {
   type() {
     //curent index of the word
     const current = this.wordIndex % this.words.length;
-    console.log(current);
-    console.log(current);
-    console.log(current);
+    // console.log(current);
+    // console.log(current);
+    // console.log(current);
     //full word
     const fullTxt = this.words[current];
 
