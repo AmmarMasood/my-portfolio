@@ -51,14 +51,15 @@
       font-family: "Luckiest Guy", cursive;
       font-size: 6rem;
       padding-bottom: 0.5rem;
-      @include respond(phone-sm) {
-        // width < 400?
-        font-size: 4rem;
-      }
       @include respond(phone) {
         // width < 600?
         font-size: 5rem;
       }
+      @include respond(phone-sm) {
+        // width < 400?
+        font-size: 4rem;
+      }
+
       // border: 2px solid red;
     }
     h3 {
@@ -72,6 +73,10 @@
     h4 {
       font-size: 2.2rem;
       color: $color-pink-dull;
+      @include respond(phone) {
+        // width < 600?
+        margin-bottom: 1rem;
+      }
     }
     &--profession {
       padding: 1rem;
