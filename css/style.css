@@ -1,3 +1,20 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
 *,
 *::after,
 *::before {
@@ -5,10 +22,26 @@
   padding: 0;
   box-sizing: border-box; }
 
+body {
+  padding: 0;
+  margin: 0; }
+
 html {
   font-size: 62.5%;
   letter-spacing: 1.4px;
   overflow: hidden; }
+  @media only screen and (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (max-width: 37.5em) {
+    html {
+      font-size: 40%; } }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 @keyframes floats {
   0% {
@@ -29,15 +62,15 @@ html {
 
 .btn {
   width: 50%;
-  font-size: 2rem;
   text-decoration: none;
   padding: 1rem 1rem;
   border-radius: 0.5rem;
   text-align: center; }
   .btn_header {
     background-color: #950740;
+    border: 1px solid yellowgreen;
     color: #1a1a1d;
-    font-weight: 800;
+    font-size: 1.8rem;
     font-family: "Play", sans-serif;
     border: 0.4rem solid #950740;
     transition: all 0.3s; }
@@ -45,11 +78,34 @@ html {
       background-color: #1a1a1d;
       color: #950740;
       border: 0.4rem solid #6f2232; }
+    @media only screen and (max-width: 37.5em) {
+      .btn_header {
+        margin-top: 3rem; } }
+  .btn_card {
+    display: none;
+    background-color: #950740;
+    margin-top: 1rem;
+    width: 30%;
+    color: #1a1a1d;
+    font-size: 1.5rem;
+    font-family: "Play", sans-serif;
+    border: 0.1rem solid #950740;
+    transition: all 0.3s; }
+    .btn_card:hover {
+      background-color: #1a1a1d;
+      color: #950740;
+      border: 0.1rem solid #6f2232; }
+    @media only screen and (max-width: 56.25em) {
+      .btn_card {
+        display: inline; } }
+    @media only screen and (max-width: 37.5em) {
+      .btn_card {
+        width: 50%; } }
 
 .navbar {
   font-family: "Play", sans-serif;
   background-color: #1a1a1d;
-  list-style-type: none;
+  list-style: none;
   position: fixed;
   width: 100%;
   top: 0;
@@ -58,6 +114,9 @@ html {
   padding: 1rem 0;
   font-size: 1.8rem;
   transition: all 0.8s; }
+  @media only screen and (max-width: 37.5em) {
+    .navbar {
+      height: 8rem; } }
   .navbar_items {
     display: flex;
     justify-content: flex-end; }
@@ -68,6 +127,9 @@ html {
     list-style: none;
     transition: all 0.3s;
     cursor: pointer; }
+    @media only screen and (max-width: 37.5em) {
+      .navbar_item {
+        display: none; } }
     .navbar_item--link {
       text-decoration: none;
       color: #c3073f;
@@ -79,7 +141,9 @@ html {
 .logo {
   float: left;
   position: absolute;
-  top: -25%; }
+  top: -25%;
+  height: 12rem;
+  width: 12rem; }
 
 .shadow {
   -webkit-box-shadow: -1px 5px 6px -2px rgba(0, 0, 0, 0.75);
@@ -102,6 +166,9 @@ html {
   /* Black */
   overflow: hidden;
   /* Disable horizontal scroll */ }
+  @media only screen and (max-width: 37.5em) {
+    .sidebar {
+      display: none; } }
   .sidebar_icons {
     height: 100%;
     display: flex;
@@ -125,6 +192,116 @@ html {
 .vr_line {
   border-left: 2px solid #4e4e50;
   height: 20rem; }
+
+.navigation {
+  display: none; }
+  @media only screen and (max-width: 37.5em) {
+    .navigation {
+      display: block; } }
+  .navigation__checkbox {
+    display: none; }
+  .navigation__button {
+    border: 0.2rem solid #c3073f;
+    background-color: #6f2232;
+    height: 5rem;
+    width: 5rem;
+    position: fixed;
+    top: 2rem;
+    right: 3rem;
+    border-radius: 10%;
+    z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer; }
+  .navigation__background {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 10%;
+    position: fixed;
+    top: 1.5rem;
+    right: 2.5rem;
+    background-image: radial-gradient(#c3073f, #950740);
+    z-index: 1000;
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
+    @media only screen and (max-width: 56.25em) {
+      .navigation__background {
+        top: 4.5rem;
+        right: 4.5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .navigation__background {
+        top: 3.5rem;
+        right: 3.5rem; } }
+  .navigation__nav {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    opacity: 0;
+    width: 0;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+  .navigation__list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    width: 100%; }
+  .navigation__item {
+    margin: 1rem; }
+  .navigation__link:link, .navigation__link:visited {
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 300;
+    padding: 1rem 2rem;
+    color: #1a1a1d;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #1a1a1d 50%);
+    background-size: 220%;
+    transition: all 0.4s; }
+    .navigation__link:link span, .navigation__link:visited span {
+      margin-right: 1.5rem;
+      display: inline-block; }
+  .navigation__link:hover, .navigation__link:active {
+    background-position: 100%;
+    color: #c3073f;
+    transform: translateX(1rem); }
+  .navigation__checkbox:checked ~ .navigation__background {
+    transform: scale(80); }
+  .navigation__checkbox:checked ~ .navigation__nav {
+    opacity: 1;
+    width: 100%; }
+  .navigation__icon {
+    position: relative;
+    margin-top: 2.3rem; }
+    .navigation__icon, .navigation__icon::before, .navigation__icon::after {
+      width: 3rem;
+      height: 2px;
+      background-color: #1a1a1d;
+      display: inline-block; }
+    .navigation__icon::before, .navigation__icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s; }
+    .navigation__icon::before {
+      top: -0.7rem; }
+    .navigation__icon::after {
+      top: 0.8rem; }
+  .navigation__button:hover .navigation__icon::before {
+    top: -1rem; }
+  .navigation__button:hover .navigation__icon::after {
+    top: 1rem; }
+  .navigation__checkbox:checked + .navigation__button .navigation__icon {
+    background-color: transparent; }
+  .navigation__checkbox:checked + .navigation__button .navigation__icon::before {
+    top: 0;
+    transform: rotate(135deg); }
+  .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
+    top: 0;
+    transform: rotate(-135deg); }
 
 .welcome {
   overflow: hidden;
@@ -168,7 +345,9 @@ html {
 
 .loading_logo {
   border-radius: 50%;
-  background-color: #1a1a1d; }
+  background-color: #1a1a1d;
+  width: 14rem;
+  height: 14rem; }
 
 .header {
   position: absolute;
@@ -183,16 +362,40 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     padding-left: 13rem; }
+    @media only screen and (max-width: 37.5em) {
+      .header_text {
+        padding-left: 0;
+        text-align: center; } }
+    .header_text--social {
+      margin-bottom: 3rem;
+      display: none; }
+      @media only screen and (max-width: 37.5em) {
+        .header_text--social {
+          display: block; } }
+    .header_text--icons {
+      list-style: none;
+      display: flex;
+      font-size: 3.5rem;
+      justify-content: center; }
+    .header_text--icon {
+      padding-right: 2rem;
+      cursor: pointer; }
+      .header_text--icon > a {
+        text-decoration: none;
+        color: #4e4e50;
+        transition: all 0.5s; }
+        .header_text--icon > a:hover {
+          color: #c3073f; }
     .header_text h1 {
       font-family: "Luckiest Guy", cursive;
       font-size: 6rem;
       padding-bottom: 0.5rem; }
     .header_text h3 {
       font-size: 4rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       font-family: "Play", sans-serif;
       color: #950740;
-      padding-bottom: 1.5rem; }
+      padding-bottom: 2rem; }
     .header_text h4 {
       font-size: 2.2rem;
       color: #6f2232; }
@@ -213,10 +416,19 @@ html {
       animation: floats 2s ease-in-out infinite; }
 
 .about {
-  background-color: #950740;
+  background-color: #1a1a1d;
   height: 100vh;
   position: relative;
   padding: 36rem 0; }
+  @media only screen and (max-width: 75em) {
+    .about {
+      padding: 40rem 0; } }
+  @media only screen and (max-width: 56.25em) {
+    .about {
+      padding: 45rem 0; } }
+  @media only screen and (max-width: 37.5em) {
+    .about {
+      padding: 50rem 0; } }
   .about_clip {
     color: #4e4e50;
     font-size: 7rem;
@@ -224,22 +436,28 @@ html {
     position: absolute;
     top: -7%;
     left: -4%; }
+    @media only screen and (max-width: 56.25em) {
+      .about_clip {
+        display: none; } }
   .about_card {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: "Play", sans-serif;
-    background-color: #1a1a1d;
-    min-height: 50%;
+    background-color: #c3073f;
+    min-height: 60%;
     min-width: 80%;
     padding: 2rem 1rem;
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75); }
+    @media only screen and (max-width: 37.5em) {
+      .about_card {
+        min-width: 90%; } }
   .about_heading {
-    color: #c3073f;
-    font-size: 5rem;
+    color: #1a1a1d;
+    font-size: 4rem;
     display: inline-block; }
   .about_stuff {
     display: grid;
@@ -247,7 +465,7 @@ html {
     grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
     grid-gap: 2rem; }
   .about_text {
-    color: #950740;
+    color: #1a1a1d;
     padding-left: 2.5rem;
     font-size: 2rem;
     justify-content: center;
@@ -281,7 +499,6 @@ html {
     .about_pic--me {
       background-image: url("../../img/my_pic.jpg");
       background-size: cover;
-      background-position: center;
       height: 30rem;
       width: 30rem;
       opacity: 0.8;
@@ -294,26 +511,42 @@ html {
 .projects {
   background-color: #1a1a1d;
   height: 100vh;
-  padding: 70rem 0;
+  padding: 90rem 0;
   position: relative; }
+  @media only screen and (max-width: 56.25em) {
+    .projects {
+      padding: 145rem 0; } }
+  @media only screen and (max-width: 37.5em) {
+    .projects {
+      padding: 150rem 0; } }
+  @media only screen and (max-width: 20.5em) {
+    .projects {
+      padding: 170rem 0; } }
   .projects_layout {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: "Play", sans-serif;
-    background-color: #950740;
+    background-color: #c3073f;
     min-height: 50%;
     width: 80%;
     padding: 2rem 1rem;
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75); }
+    @media only screen and (max-width: 37.5em) {
+      .projects_layout {
+        width: 90%; } }
     .projects_layout h1 {
       color: #1a1a1d;
-      font-size: 5rem;
+      font-size: 4rem;
+      font-weight: 100;
       margin-bottom: 2rem;
       display: inline-block; }
+      @media only screen and (max-width: 37.5em) {
+        .projects_layout h1 {
+          font-size: 4rem; } }
   .projects_cards {
     display: grid;
     grid-template-columns: auto;
@@ -326,15 +559,21 @@ html {
     min-height: 20rem;
     width: 80%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
     grid-gap: 1rem;
     -webkit-box-shadow: 1px 13px 18px -11px rgba(0, 0, 0, 0.6);
     -moz-box-shadow: 1px 13px 18px -11px rgba(0, 0, 0, 0.6);
     box-shadow: 1px 13px 18px -11px rgba(0, 0, 0, 0.6);
     padding: 1rem;
     transition: all 0.5s; }
+    @media only screen and (max-width: 75em) {
+      .projects_card {
+        width: 95%; } }
+    @media only screen and (max-width: 56.25em) {
+      .projects_card {
+        padding: 2.3rem;
+        grid-gap: 2rem; } }
     .projects_card:hover {
-      transform: translateY(-20px);
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75); }
       .projects_card:hover .projects_card--btn {
         opacity: 1; }
@@ -361,21 +600,39 @@ html {
     .projects_card--img {
       transition: all 0.5s;
       display: grid;
-      justify-items: end;
+      justify-items: center;
+      align-content: center;
       opacity: 1; }
+      @media only screen and (max-width: 56.25em) {
+        .projects_card--img {
+          width: 95%; } }
     .projects_card img {
       width: 90%;
       height: 24rem;
       border-radius: 3rem; }
+      @media only screen and (max-width: 56.25em) {
+        .projects_card img {
+          height: 26rem; } }
     .projects_card h2 {
-      font-size: 3rem; }
+      font-size: 3rem;
+      font-weight: 100; }
     .projects_card p {
-      font-size: 2rem; }
+      font-size: 2rem;
+      font-weight: 100; }
+    .projects_card h6 {
+      color: #4e4e50;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 100; }
 
 .contact {
   display: flex;
-  min-height: 100vh;
-  background-color: #950740; }
+  min-height: 90vh;
+  background-color: #1a1a1d;
+  top: -2rem; }
+  @media only screen and (max-width: 37.5em) {
+    .contact {
+      min-height: 80vh; } }
 
 .form {
   flex: 0 1 90rem;
@@ -384,7 +641,7 @@ html {
   font-family: "Play", sans-serif; }
   .form_screen {
     position: relative;
-    background: #1a1a1d;
+    background: #c3073f;
     border-radius: 15px; }
     .form_screen::after {
       content: "";
@@ -409,7 +666,7 @@ html {
     display: flex;
     flex-direction: column;
     position: relative;
-    color: #950740;
+    color: #1a1a1d;
     font-size: 3rem; }
     .form_title::after {
       content: "";
@@ -419,11 +676,11 @@ html {
       bottom: -10px;
       width: 5rem;
       height: 0.5rem;
-      background: #950740; }
+      background: #1a1a1d; }
   .form_contact {
     margin-top: auto;
     font-size: 1.5rem;
-    color: #4e4e50; }
+    color: #1a1a1d; }
   .form_app_group {
     margin-bottom: 15px;
     font-family: "Play", sans-serif; }
@@ -438,21 +695,23 @@ html {
     padding: 1.3rem 0;
     background: none;
     border: none;
-    border-bottom: 1px solid #4e4e50;
+    border-bottom: 1px solid #1a1a1d;
     color: #ddd;
     font-size: 1.5rem;
     outline: none;
     transition: border-color 0.2s; }
     .form_app_control::placeholder {
-      color: #4e4e50; }
+      color: #1a1a1d; }
     .form_app_control:focus {
       border-bottom-color: #ddd; }
   .form_app_button {
     background: none;
     border: none;
-    color: #950740;
-    padding-right: 1rem;
+    color: #1a1a1d;
+    padding: 0.8rem;
+    border: 2px solid #1a1a1d;
     font-size: 1.4rem;
+    padding: 1rem;
     cursor: pointer;
     outline: none;
     font-family: "Play", sans-serif;
@@ -466,12 +725,12 @@ html {
   position: absolute;
   font-size: 1.3rem;
   color: #1a1a1d;
-  border: 2px solid white;
   opacity: 0;
   transition: all 1s;
   text-align: center;
-  background-color: #c3073f;
-  padding: 1rem; }
+  background-color: rgba(78, 78, 80, 0.8);
+  padding: 1rem;
+  border-radius: 5%; }
 
 @media screen and (max-width: 520px) {
   .form_body {

@@ -1,4 +1,5 @@
 @import "./abstract/_variables.scss";
+@import "./abstract/_mixins.scss";
 
 @import "./base/_base.scss";
 @import "./base/_animation.scss";
@@ -8,6 +9,7 @@
 @import "./components/_navbar.scss";
 @import "./components/_form.scss";
 @import "./components/_sidebar.scss";
+@import "./components/_navbutton.scss";
 
 @import "./layout/_loading.scss";
 @import "./layout/_header.scss";

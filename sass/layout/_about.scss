@@ -1,8 +1,21 @@
 .about {
-  background-color: $color-pink-dark;
+  background-color: $color-grey-dark;
   height: 100vh;
   position: relative;
   padding: 36rem 0;
+
+  @include respond(tab-land) {
+    // width < 1200?
+    padding: 40rem 0; //1 rem = 9px, 9/16 = 50%
+  }
+  @include respond(tab-port) {
+    // width < 1200?
+    padding: 45rem 0; //1 rem = 9px, 9/16 = 50%
+  }
+  @include respond(phone) {
+    // width < 600?
+    padding: 50rem 0; //1 rem = 9px, 9/16 = 50%
+  }
 
   // border: 2px solid green;
   // z-index: 1;
@@ -15,6 +28,10 @@
     position: absolute;
     top: -7%;
     left: -4%;
+    @include respond(tab-port) {
+      // width < 1200?
+      display: none;
+    }
   }
 
   &_card {
@@ -24,10 +41,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: $font-primary;
-    background-color: $color-grey-dark;
-    min-height: 50%;
+    background-color: $color-pink-bright;
+    min-height: 60%;
     min-width: 80%;
-
+    @include respond(phone) {
+      // width < 600?
+      min-width: 90%;
+    }
     padding: 2rem 1rem;
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
@@ -35,8 +55,8 @@
     // padding: 20rem 60rem;
   }
   &_heading {
-    color: $color-pink-bright;
-    font-size: 5rem;
+    color: $color-grey-dark;
+    font-size: 4rem;
 
     display: inline-block;
     // border: 2px solid brown;
@@ -50,7 +70,7 @@
   }
   &_text {
     // border: 2px solid red;
-    color: $color-pink-dark;
+    color: $color-grey-dark;
     padding-left: 2.5rem;
     font-size: 2rem;
     justify-content: center;
@@ -97,7 +117,7 @@
     &--me {
       background-image: url("../../img/my_pic.jpg");
       background-size: cover;
-      background-position: center;
+      // background-position: ;
       height: 30rem;
       width: 30rem;
       opacity: 0.8;

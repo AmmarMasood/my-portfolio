@@ -4,8 +4,13 @@
 
 .contact {
   display: flex;
-  min-height: 100vh;
-  background-color: $color-pink-dark;
+  min-height: 90vh;
+  background-color: $color-grey-dark;
+  top: -2rem;
+  @include respond(phone) {
+    // width < 600?
+    min-height: 80vh; //1 rem = 9px, 9/16 = 50%
+  }
 }
 
 .form {
@@ -16,7 +21,7 @@
 
   &_screen {
     position: relative;
-    background: $color-grey-dark;
+    background: $color-pink-bright;
     border-radius: 15px;
 
     &::after {
@@ -50,7 +55,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    color: $color-pink-dark;
+    color: $color-grey-dark;
     font-size: 3rem;
     &::after {
       content: "";
@@ -60,13 +65,13 @@
       bottom: -10px;
       width: 5rem;
       height: 0.5rem;
-      background: $color-pink-dark;
+      background: $color-grey-dark;
     }
   }
   &_contact {
     margin-top: auto;
     font-size: 1.5rem;
-    color: $color-grey-light;
+    color: $color-grey-dark;
   }
   &_app_group {
     margin-bottom: 15px;
@@ -85,7 +90,7 @@
     padding: 1.3rem 0;
     background: none;
     border: none;
-    border-bottom: 1px solid $color-grey-light;
+    border-bottom: 1px solid $color-grey-dark;
     color: #ddd;
     font-size: 1.5rem;
 
@@ -93,7 +98,7 @@
     transition: border-color 0.2s;
 
     &::placeholder {
-      color: $color-grey-light;
+      color: $color-grey-dark;
     }
     &:focus {
       border-bottom-color: #ddd;
@@ -103,9 +108,11 @@
   &_app_button {
     background: none;
     border: none;
-    color: $color-pink-dark;
-    padding-right: 1rem;
+    color: $color-grey-dark;
+    padding: 0.8rem;
+    border: 2px solid $color-grey-dark;
     font-size: 1.4rem;
+    padding: 1rem;
     cursor: pointer;
     outline: none;
     font-family: $font-primary;
@@ -121,12 +128,12 @@
   position: absolute;
   font-size: 1.3rem;
   color: $color-grey-dark;
-  border: 2px solid white;
   opacity: 0;
   transition: all 1s;
   text-align: center;
-  background-color: $color-pink-bright;
+  background-color: rgba($color-grey-light, 0.8);
   padding: 1rem;
+  border-radius: 5%;
 }
 
 @media screen and (max-width: 520px) {
@@ -160,41 +167,3 @@
     padding: 0;
   }
 }
-
-// height: 100vh;
-// background-color: $color-pink-dark;
-// position: relative;
-
-// &_layout {
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   background-color: $color-grey-dark;
-//   height: 70rem;
-//   width: 80%;
-// }
-// &_heading {
-//   font-size: 5rem;
-//   color: $color-pink-dark;
-//   padding: 1rem;
-//   margin-bottom: 2rem;
-// }
-// &_info {
-//   display: grid;
-//   height: 70%;
-//   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-
-//   &--details {
-//     padding: 5rem 0;
-//     display: grid;
-//     justify-content: center;
-//     align-content: center;
-//     font-size: 2rem;
-//     color: $color-grey-light;
-//   }
-//   &--message {
-//     background-color: $color-pink-dark;
-//     height: 100%;
-//   }
-// }

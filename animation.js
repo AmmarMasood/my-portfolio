@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         targets: ".loading_logo",
         easing: "easeInOutElastic",
-        background: "#c3073f"
+        backgroundColor: "#c3073f"
       },
       0
     )
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         targets: ".loading_logo",
         easing: "easeInOutElastic",
-        background: "#1a1a1d"
+        backgroundColor: "#1a1a1d"
       },
       0
     )
@@ -76,7 +76,6 @@ window.onscroll = function() {
   }
   prevScrollpos = currentScrollpos;
   var scroll = window.scrollY;
-  console.log(scroll);
   if (scroll > 0) {
     document.querySelector(".navbar").classList.add("shadow");
   } else {
@@ -84,25 +83,81 @@ window.onscroll = function() {
   }
 };
 
-function scrollTo(to, duration) {
-  if (document.body.scrollTop == to) return;
-  var diff = to - document.body.scrollTop;
-  var scrollStep = Math.PI / (duration / 10);
-  var count = 0,
-    currPos;
-  start = window.pageYOffset;
-  scrollInterval = setInterval(function() {
-    if (document.body.scrollTop != to) {
-      count = count + 1;
-      currPos = start + diff * (0.5 - 0.5 * Math.cos(count * scrollStep));
-      document.body.scrollTop = currPos;
-    } else {
-      clearInterval(scrollInterval);
-    }
-  }, 10);
+// function scrollTo(to, duration) {
+//   if (document.body.scrollTop == to) return;
+//   var diff = to - document.body.scrollTop;
+//   var scrollStep = Math.PI / (duration / 10);
+//   var count = 0,
+//     currPos;
+//   start = window.pageYOffset;
+//   scrollInterval = setInterval(function() {
+//     if (document.body.scrollTop != to) {
+//       count = count + 1;
+//       currPos = start + diff * (0.5 - 0.5 * Math.cos(count * scrollStep));
+//       document.body.scrollTop = currPos;
+//     } else {
+//       clearInterval(scrollInterval);
+//     }
+//   }, 10);
+// }
+
+// function test(elID) {
+//   closeNav();
+//   var dest = document.getElementById(elID);
+//   scrollTo(dest.offsetTop, 500);
+// }
+function closeNav() {
+  document.querySelector("#navi-toggle").checked = false;
+}
+function currentYPosition() {
+  // Firefox, Chrome, Opera, Safari
+  if (self.pageYOffset) return self.pageYOffset;
+  // Internet Explorer 6 - standards mode
+  if (document.documentElement && document.documentElement.scrollTop)
+    return document.documentElement.scrollTop;
+  // Internet Explorer 6, 7 and 8
+  if (document.body.scrollTop) return document.body.scrollTop;
+  return 0;
 }
 
-function test(elID) {
-  var dest = document.getElementById(elID);
-  scrollTo(dest.offsetTop, 500);
+function elmYPosition(eID) {
+  var elm = document.getElementById(eID);
+  var y = elm.offsetTop;
+  var node = elm;
+  while (node.offsetParent && node.offsetParent != document.body) {
+    node = node.offsetParent;
+    y += node.offsetTop;
+  }
+  return y;
+}
+
+function test(eID) {
+  closeNav();
+  var startY = currentYPosition();
+  var stopY = elmYPosition(eID);
+  var distance = stopY > startY ? stopY - startY : startY - stopY;
+  if (distance < 100) {
+    scrollTo(0, stopY);
+    return;
+  }
+  var speed = Math.round(distance / 50);
+  if (speed >= 20) speed = 20;
+  var step = Math.round(distance / 25);
+  var leapY = stopY > startY ? startY + step : startY - step;
+  var timer = 0;
+  if (stopY > startY) {
+    for (var i = startY; i < stopY; i += step) {
+      setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+      leapY += step;
+      if (leapY > stopY) leapY = stopY;
+      timer++;
+    }
+    return;
+  }
+  for (var i = startY; i > stopY; i -= step) {
+    setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+    leapY -= step;
+    if (leapY < stopY) leapY = stopY;
+    timer++;
+  }
 }
