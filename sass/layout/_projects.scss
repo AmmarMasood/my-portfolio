@@ -10,11 +10,11 @@
   }
   @include respond(phone) {
     // width < 600?
-    padding: 150rem 0; //1 rem = 9px, 9/16 = 50%
+    padding: 155rem 0; //1 rem = 9px, 9/16 = 50%
   }
   @include respond(phone-sm) {
     // width < 600?
-    padding: 170rem 0; //1 rem = 9px, 9/16 = 50%
+    padding: 175rem 0; //1 rem = 9px, 9/16 = 50%
   }
 
   &_layout {
