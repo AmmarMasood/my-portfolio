@@ -598,7 +598,7 @@ html {
       height: 31rem;
       width: 31rem; }
     .about_pic--me {
-      background-image: url("../../img/my_pic.jpg");
+      background-image: url("../img/my_pic.jpg");
       background-size: cover;
       height: 30rem;
       width: 30rem;
@@ -619,10 +619,10 @@ html {
       padding: 145rem 0; } }
   @media only screen and (max-width: 37.5em) {
     .projects {
-      padding: 155rem 0; } }
+      padding: 165rem 0; } }
   @media only screen and (max-width: 20.5em) {
     .projects {
-      padding: 175rem 0; } }
+      padding: 180rem 0; } }
   .projects_layout {
     position: absolute;
     top: 50%;
