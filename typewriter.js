@@ -55,11 +55,11 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
   const txtElement = document.querySelector(".header_text--profession");
   const words = [
-    "Developer",
-    "Desinger",
-    "Entrepreneur",
-    "Student",
-    "Tech Lover"
+    " Student",
+    " Developer",
+    "n Entrepreneur",
+    " Designer",
+    " Tech Lover"
   ];
   //const jwords = JSON.parse(words);
   const wait = 3500;

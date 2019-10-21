@@ -52,6 +52,7 @@
   }
 
   &_title {
+    font-family: $font-secondary;
     display: flex;
     flex-direction: column;
     position: relative;

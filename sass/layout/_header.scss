@@ -63,15 +63,16 @@
       // border: 2px solid red;
     }
     h3 {
-      font-size: 4rem;
+      font-size: 3.5rem;
       margin-bottom: 1rem;
-      font-family: $font-primary;
+      font-family: $font-secondary;
       color: $color-pink-dark;
       padding-bottom: 2rem;
       // border: 2px solid green;
     }
     h4 {
-      font-size: 2.2rem;
+      font-size: 2rem;
+      font-family: $font-secondary;
       color: $color-pink-dull;
       @include respond(phone) {
         // width < 600?
@@ -79,7 +80,9 @@
       }
     }
     &--profession {
+      font-size: 3.5rem;
       padding: 1rem;
+      font-family: $font-secondary;
       color: $color-pink-bright;
       & > .txt {
         border-right: 4px solid $color-grey-light;
